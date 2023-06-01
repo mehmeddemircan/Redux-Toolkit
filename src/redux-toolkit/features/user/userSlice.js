@@ -1,29 +1,27 @@
 import { createSlice } from '@reduxjs/toolkit'
-import { getAllPost } from '../../actions/PostActions';
+import { getAllUser } from '../../actions/UserActions';
 
 const initialState = {
-    data :  [],
+    data : [],
     loading : false,
     success : false , 
 }
 
-const postSlice = createSlice({
-  name: 'post',
+const userSlice = createSlice({
+  name: "user",
   initialState,
-  reducers: {
-     
-  },
+  reducers: {},
   extraReducers : (builder) => {
     builder
-    .addCase(getAllPost.pending,(state) => {
+    .addCase(getAllUser.pending,(state) => {
         state.loading = true;
     })
-    .addCase(getAllPost.fulfilled , (state,action) => {
+    .addCase(getAllUser.fulfilled , (state,action) => {
         state.loading = false;
         state.data = action.payload;
         state.error = null 
     })
-    .addCase(getAllPost.rejected, (state,action) => {
+    .addCase(getAllUser.rejected, (state,action) => {
         state.loading = false ;
         state.error = action.error.message
     })
@@ -32,4 +30,4 @@ const postSlice = createSlice({
 
 
 
-export default postSlice.reducer
+export default userSlice.reducer
